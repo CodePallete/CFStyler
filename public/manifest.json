@@ -2,7 +2,15 @@
   "manifest_version": 3,
   "name": "CFStyler",
   "version": "1.0.0",
+  "permissions": ["activeTab"],
+  "content_scripts": [
+    {
+      "matches": ["https://codeforces.com/*", "https://*/*"],
+      "js": ["content.bundle.js"],
+      "css": ["content.bundle.css"]
+    }
+  ],
   "action": {
-    "default_popup": "index.html"
+    "default_popup": "popup.html"
   }
 }
