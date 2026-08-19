@@ -1,24 +1,37 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
-import "./index.css";
-import App from "./App.tsx";
+import CodeforcesUi from "./components/codeforcesui";
 
-const cfBody = document.querySelector("#body");
+document.documentElement.setAttribute("data-cfstyler-loaded", "1");
 
-if (cfBody) {
-  const extensionRoot = document.createElement("div");
-  extensionRoot.id = "cf-beautifier-root";
+function mountContentUi() {
+  const body = document.querySelector("body");
 
-  cfBody.prepend(extensionRoot);
+  if (!body) {
+    return;
+  }
 
-  const root = createRoot(extensionRoot);
-  root.render(
+  const existingRoot = document.getElementById("cf-styler-root");
+  const mountNode = existingRoot ?? document.createElement("div");
+  mountNode.id = "cf-styler-root";
+
+  if (!existingRoot) {
+    body.prepend(mountNode);
+
+    console.log(
+      "Extension Alert: React content UI injected successfully. If you don't see it, please check the console for any errors.",
+    );
+  }
+
+  createRoot(document.getElementById(mountNode.id)!).render(
     <StrictMode>
-      <App />
+      <CodeforcesUi />
     </StrictMode>,
   );
+}
+
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", mountContentUi, { once: true });
 } else {
-  console.warn(
-    "Extension Alert: Main container not found. Layout might have changed.",
-  );
+  mountContentUi();
 }

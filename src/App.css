@@ -1,7 +1,14 @@
 .extension-controls__section {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
+  grid-column: auto-fill;
   gap: 1rem;
+  margin-top: 1rem;
+
+  background-color: #f2f4d6;
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .extension-controls__button {
@@ -12,8 +19,24 @@
   color: white;
   cursor: pointer;
   transition: background-color 0.3s;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  width: max-content;
 }
 
 .extension-controls__button:hover {
   opacity: 1;
+}
+
+.extension-controls__selected-theme {
+  margin-top: 1rem;
+  font-size: 0.8rem;
+
+  background-color: #eeeeec;
+  padding: 0.5rem;
+  border-radius: 14px;
+}
+
+.extension-controls__selected-theme span {
+  border-radius: 14px;
+  padding: 0.2rem 0.5rem;
 }
