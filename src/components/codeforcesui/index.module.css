@@ -1,7 +1,7 @@
 .main {
-  background: #ffffff;
-  color: #111827;
-  border: 1px solid #d1d5db;
+  background: var(--foreground-1);
+  color: var(--color);
+  border: 1px solid var(--border-color);
   border-radius: 8px;
   padding: 12px;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.16);
