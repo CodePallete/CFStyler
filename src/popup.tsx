@@ -1,6 +1,6 @@
 import { StrictMode, useEffect, useState } from "react";
 import { createRoot } from "react-dom/client";
-import App from "./App";
+import PopupMain from "./PopupMain";
 
 declare const chrome: {
   tabs: {
@@ -50,7 +50,7 @@ function Popup() {
               extension.
             </p>
           </div>
-          <App />
+          <PopupMain />
         </>
       )}
 

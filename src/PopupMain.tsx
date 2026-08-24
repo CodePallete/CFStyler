@@ -1,5 +1,13 @@
-import { useEffect, useState } from "react";
-import "./App.css";
+import { useState } from "react";
+import "./PopupMain.css";
+
+declare const chrome: {
+  storage: {
+    local: {
+      set: (items: { [key: string]: any }) => Promise<void>;
+    };
+  };
+};
 
 function App() {
   const [selectedTheme, setSelectedTheme] = useState<string | null>(null);
@@ -24,23 +32,14 @@ function App() {
     { name: "darkglass", color: "rgba(0, 0, 0, 0.5)", textColor: "#ffffff" },
   ];
 
-  useEffect(() => {
-    if (selectedTheme) {
-      const pageRoot = document.querySelector<HTMLElement>("#body");
-
-      if (pageRoot) {
-        pageRoot.setAttribute("data-theme", selectedTheme);
-      } else {
-        console.warn(
-          "Extension Alert: Main container not found. Layout might have changed.",
-        );
-      }
-    }
-  }, [selectedTheme]);
-
   const selectedThemeDetails = availableThemes.find(
     (theme) => theme.name === selectedTheme,
   );
+
+  const handleThemeSelect = async (themeName: string) => {
+    setSelectedTheme(themeName);
+    await chrome.storage.local.set({ theme: themeName });
+  };
 
   return (
     <div className="extension-controls">
@@ -70,7 +69,7 @@ function App() {
             className="extension-controls__button"
             style={{ background: theme.color, color: theme.textColor }}
             onClick={() => {
-              setSelectedTheme(theme.name);
+              handleThemeSelect(theme.name);
             }}
           >
             {theme.name}

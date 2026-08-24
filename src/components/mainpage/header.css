@@ -1,0 +1,33 @@
+div.cf-styler-header {
+  display: flex;
+  justify-content: space-between;
+
+  align-items: center;
+  padding: 1rem 3rem;
+  border: 1px solid var(--border-color);
+  min-height: 60px !important;
+}
+
+.cf-styler-header a[href^="/enter"],
+.cf-styler-header a[href^="/register"] {
+  font-size: 1.5rem;
+  margin: 0;
+  padding: 0.5rem 1rem;
+  background-color: var(--background-1);
+  color: var(--foreground-2);
+  text-decoration: none;
+}
+
+.cf-styler-header a[href^="/enter"]:hover,
+.cf-styler-header a[href^="/register"]:hover {
+  background-color: var(--background-2);
+  color: var(--foreground-1);
+}
+
+.cf-styler-header br {
+  display: none;
+}
+
+div.cf-styler-body {
+  max-width: 100% !important;
+}

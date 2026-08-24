@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "CFStyler",
   "version": "1.0.0",
-  "permissions": ["activeTab"],
+  "permissions": ["activeTab", "storage"],
   "description": "A Chrome extension to style Codeforces pages and customize themes.",
   "content_scripts": [
     {
@@ -12,7 +12,8 @@
         "http://codeforces.com/*",
         "http://*.codeforces.com/*"
       ],
-      "js": ["main.bundle.js"]
+      "js": ["main.bundle.js"],
+      "css": ["main.bundle.css"]
     }
   ],
   "action": {
